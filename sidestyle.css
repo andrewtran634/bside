@@ -1,0 +1,42 @@
+* { margin:0; padding:0; }   
+#main {
+	background-color: #52527A;
+	height: 100vh;
+	width:100%;
+}
+#main p {
+	font-family:'Josefin Slab';
+	color: white;
+}
+
+#main h1 {
+	font-family:'Josefin Slab';
+	color: white;
+	display:inline-block;
+}
+#cont {
+	display: block;
+}
+#logo {
+	height: 10%;
+	width: 20%;
+	border-color: white;
+	border-style:solid;
+	border-width:2px;
+	float:left;
+	border-radius:4px;
+	display:inline;
+	text-align:center;
+	margin-left: 8%;
+	margin-top: 2%;
+}
+#left {
+	width:100%;
+	display:inline-block;
+}
+#about {
+	display:block;
+}
+#about:hover {
+}
+	
