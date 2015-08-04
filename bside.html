@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+<title>.bside</title>
+<link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="sidestyle.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+<body>
+<div id = "main">
+	<div id = "cont">
+		<div id = "wrap">
+			<div id = "logo">
+				<h1>.bside</h1>
+				<p>unite skaters</p>
+			</div>
+			<div id = "img">
+				<div id = "png">
+					<img src = "bside.png" id = "pic">
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div id = "line">
+		<div id = "left">
+			<div id = "check">
+				<p>Start Session</p>
+			</div>
+			
+			<div id = "delete">
+				<p>End Session</p>
+			</div>
+		</div>
+		<!--
+		<div id = "right">
+			<div id = "map">
+				<p>Find Sessions</p>
+			</div>
+			
+			<div id = "about">
+				<p>About</p>
+			</div>
+		</div>-->
+	</div>
+</div>
+
+<div id = "open">
+	<p>.bside will hopefully be a project that allows <br> skaters to find each other in the city they are in! </p>
+</div>
+
+<script>
+	$(document).ready(function() {
+			$('#open').hide();
+			$('#about').click(function() {
+				$('#open').show();
+				//$('#reveal').scrollTop($('#reveal')[0].scrollHeight, 'slow');
+				$('body').animate({
+						scrollTop: $('#open')[0].scrollHeight
+					}, 500);
+			});
+		});
+</script>
+</body>
