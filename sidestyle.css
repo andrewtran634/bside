@@ -1,7 +1,6 @@
 * { margin:0; padding:0; }   
 #main {
 	background-color: #52527A;
-	height: 100vh;
 	width:100%;
 }
 #main p {
@@ -21,7 +20,6 @@
 #logo {
 	height: 10%;
 	width: 20%;
-<<<<<<< HEAD
 	border-color: #FFFFFF;
 	border-style:solid;
 	border-width:2px;
@@ -31,47 +29,18 @@
 	margin-right:auto;
 	padding: 1%;
 }
-#line div {
-	display:inline-block;
-}
-#left {
-	margin:4%;
-	
-}
-#left div {
-	display:block;
-}
-#right {
-	float:right;
-	margin:4%;
-}
-#right div {
-	display: block;
-=======
-	border-color: white;
-	border-style:solid;
-	border-width:2px;
-	float:left;
-	border-radius:4px;
-	display:inline;
-	text-align:center;
-	margin-left: 8%;
-	margin-top: 2%;
-}
-#left {
-	width:100%;
-	display:inline-block;
+
+#center {
+	margin-left:auto;
+	margin-right:auto;
 }
 #about {
 	display:block;
 }
-<<<<<<< HEAD
 #img {
 	margin-left:auto;
 	text-align:center;
 	margin-right:auto;
-}
-#about:hover {
 }
 #wrap {
 	padding:2%;
@@ -87,4 +56,39 @@
 }
 #about:hover {
 }
-	
+#line {
+}
+#line div {
+	display:inline-block;
+}
+#left {
+	width:100%;
+}
+#right {
+	width:100%;
+}
+#link {
+	text-align:center;
+	margin: 5%;
+	width:35%;
+	border-radius:4px;
+}
+
+#center {
+	margin-left:auto;
+	margin-right:auto;
+}
+.red {
+	background-color:red;
+}
+.yellow {
+	background-color:yellow;
+	float:right;
+}
+.blue {
+	background-color:blue;
+	float:right;
+}
+.green {
+	background-color:green;
+}
