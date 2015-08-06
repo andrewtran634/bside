@@ -1,6 +1,7 @@
 * { margin:0; padding:0; }   
 #main {
 	background-color: #52527A;
+	height:100%;
 	width:100%;
 }
 #main p {
