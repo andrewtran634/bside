@@ -6,3 +6,4 @@ class Spot(models.Model):
 	description = models.TextField()
 	lon = models.FloatField()
 	lat = models.FloatField()
+	time = models.FloatField()

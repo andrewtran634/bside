@@ -25,11 +25,15 @@
 		<div id = "line">
 			<div id = "left">
 				<div id = "link" class = "red"> 
-					<p>Start Session</p>
+					<a href = "{% url 'main:start' %}">
+						<p>Start Session</p>
+					</a>	
 				</div>
 				
 				<div id = "link" class = "yellow">
-					<p>End Session</p>
+					<a href = "{% url 'main:end' %}">
+						<p>End Session</p>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -37,11 +41,15 @@
 	<div id = "line">
 		<div id = "right">
 			<div id = "link" class = "green">
-				<p>Find Sessions</p>
+				<a href = "{% url 'main:find' %}"
+					<p>Find Sessions</p>
+				</a>
 			</div>
 			
 			<div id = "link" class = "blue">
-				<p>About</p>
+				<a href = "{% url 'main:about' %}">
+					<p>About</p>
+				</a>
 			</div>
 		</div>
 	</div>
