@@ -1,1 +1,43 @@
-end
+{% block list %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script type="text/javascript">
+	function findTime() {
+
+	}
+</script>
+<div id = "home">
+	<a href = "{% url 'main:index' %}">
+		.bside
+	</a>
+</div>	
+{% if spotlist %}
+
+	{% for spot in spotlist %}
+		<div id = "spot">
+			<p id = "spotname">
+				{{ spot.name }}
+			</p>
+
+			<p id = "spotdesc">
+				{{ spot.description }}
+			</p>
+
+			<p id = "timeleft">
+				{{ spot.timeleft }}
+				<!---->
+			</p>
+		</div>
+
+		<div id = "del">	
+			<form method = "POST" action = "{% url 'main:delete' spot.id %}" id = "delete">
+				{% csrf_token %}
+				<input type = "submit" value = "end sesh">
+			</form>	
+		</div>
+	{% endfor %}	
+{% else %}
+There are no spots?
+{% endif %}
+{% endblock %}

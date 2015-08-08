@@ -9,5 +9,5 @@ urlpatterns = [
     url(r'^find/$', views.find, name='find'),
     url(r'^end/$', views.end, name='end'),
     url(r'^startsesh/$', views.startsesh, name='startsesh'),
-
+    url(r'^delete/(?P<spot_id>\d+)$', views.delete, name='delete'),
 ]

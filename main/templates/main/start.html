@@ -1,16 +1,61 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+<script>
+	var lat = 0;
+	var lon = 0;
+	function getLocation() {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(setPosition, showError, {timeout:10000});
+		}
+		else {
+			$("#nope").html("GEOLOCATION NOT AVAILABLE IN THIS BROWSER");
+		}
+	}
+	function setPosition() {
+		lat = position.coords.latitude;
+		lon = position.coords.longitude;
+	}
+
+	function showError(error) {
+	    switch(error.code) {
+	        case error.PERMISSION_DENIED:
+	            $("#nope").html("User denied the request for Geolocation.")
+	            break;
+	        case error.POSITION_UNAVAILABLE:
+	            $("#nope").html("Location information is unavailable.")
+	            break;
+	        case error.TIMEOUT:
+	            $("#nope").html("The request to get user location timed out.")
+	            break;
+	        case error.UNKNOWN_ERROR:
+	            $("#nope").html("An unknown error occurred.")
+	            break;
+    }
+}
+
+	$(document).ready(function() {
+		$("#nope").hide();
+		/*$("#lat").hide();
+		$('#lon').hide();*/
+		getLocation();
+		document.getElementById("lat").value = lat;
+		document.getElementById("lon").value = lon;
+	});
+
+	
+</script>
+
+<div id = "nope">
+</div>
+<div id = "work">
+</div>	
 <form action = "{% url 'main:startsesh' %}" id = "deets" method = "POST">
+	{% csrf_token %}
 	<input type = "text" name = "name" id = "name" placeholder = "name the sesh">
 	<textarea name = "description" id = "description" placeholder = "what's happening at the sesh?"></textarea>
 	<input type = "text" name = "time" id = "time">
+	<input type = "text" name = "lat" id = "lat">
+	<input type = "text" name = "lon" id = "lon">
 	<input type = "submit" value = "start">
 </form>
-
-<script>
-
-	$(document).ready(function() {
-		$("#submit").onkeypress(function() {
-			if
-		});
-	});
-
-</script>
