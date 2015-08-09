@@ -29,7 +29,39 @@
 				<!---->
 			</p>
 		</div>	
-	{% endfor %}	
+	{% endfor %}
+
+
+    <style type="text/css">
+      html, body, #map-canvas { height: 100%;}
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmu-0gJXE0CMNQRYnXeLCM_oN2_WXSR7E">
+    </script>
+    <script type="text/javascript">
+	   	function getLocation() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(initialize, showError, {timeout:10000});
+			}
+			else {
+				$("#nope").html("GEOLOCATION NOT AVAILABLE IN THIS BROWSER");
+				$("#nope").show()
+			}
+		}
+      function initialize() {
+        var mapOptions = {
+          center: { lat: -34.397, lng: 150.644},
+          zoom: 8
+        };
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body>
+<div id="map-canvas"></div>
+
 {% else %}
 There are no spots?
 {% endif %}

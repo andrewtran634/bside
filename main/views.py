@@ -12,12 +12,12 @@ def index(request):
 def start(request):
 	return render(request, 'main/start.html')
 def find(request):
-	spotlist = Spot.objects.all()	
+	spotlist = Spot.objects.all().order_by('-id')	
 	return render(request, 'main/find.html', { 'spotlist' : spotlist })
 def about(request):
 	return render(request, 'main/about.html')
 def end(request):
-	spotlist = Spot.objects.all()	
+	spotlist = Spot.objects.all().order_by('-id')	
 	return render(request, 'main/end.html', { 'spotlist' : spotlist })
 
 def startsesh(request):
