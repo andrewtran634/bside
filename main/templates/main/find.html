@@ -41,22 +41,29 @@
     <script type="text/javascript">
 	   	function getLocation() {
 			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(initialize, showError, {timeout:10000});
+				navigator.geolocation.getCurrentPosition(setPost, showError, {timeout:10000});
 			}
 			else {
 				$("#nope").html("GEOLOCATION NOT AVAILABLE IN THIS BROWSER");
 				$("#nope").show()
 			}
 		}
-      function initialize() {
+		function setPost(position) {
+			lat = postition.coords.latitude;
+			lon = position.coords.longitude;
+		}
+      function initialize(lat, lon) {
         var mapOptions = {
-          center: { lat: -34.397, lng: 150.644},
+          center: { lat: lat, lng: lon},
           zoom: 8
         };
         var map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
       }
       google.maps.event.addDomListener(window, 'load', initialize);
+      $(document).ready(function() {
+
+      });
     </script>
   </head>
   <body>
