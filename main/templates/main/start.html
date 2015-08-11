@@ -40,8 +40,8 @@
     }
 	$(document).ready(function() {
 		$("#nope").hide();
-		$("#lat").hide();
-		$('#lon').hide();
+		/*$("#lat").hide();
+		$('#lon').hide();*/
 		getLocation();
 	});
 	window.onload = getLocation;
@@ -55,16 +55,23 @@
 </div>	
 <form action = "{% url 'main:startsesh' %}" id = "deets" method = "POST">
 	{% csrf_token %}
-	<input type = "text" name = "name" id = "name" placeholder = "name the session">
-	<textarea name = "description" id = "description" placeholder = "what's happening at the session?"></textarea>
-	<input type = "text" name = "time" id = "time" placeholder = "how long is the session going for?">
-	<input type = "text" name = "lat" id = "lat">
-	<input type = "text" name = "lon" id = "lon">
+	<input type = "text" name = "name" id = "name" placeholder = "name the sesh">
+	<textarea name = "description" id = "description" placeholder = "what's happening at the sesh?"></textarea>
+	<input type = "text" name = "time" id = "time">
+	<input type = "text" name = "lat" id = "latitude">
+	<input type = "text" name = "lon" id = "longitude">
 	<input type = "submit" value = "start">
 </form>
 
+
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
 <script>
-/*var x = document.getElementById("demo");
+var x = document.getElementById("demo");
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -79,5 +86,5 @@ function showPosition(position) {
     "<br>Longitude: " + position.coords.longitude;	
     document.getElementById("longitude").value = position.coords.longitude;
     document.getElementById("latitude").value = position.coords.latitude;
-}*/
+}
 </script>

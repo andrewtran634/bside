@@ -39,30 +39,51 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmu-0gJXE0CMNQRYnXeLCM_oN2_WXSR7E">
     </script>
     <script type="text/javascript">
+    	/*function addMarkers(map) {
+    		{% for spot in spotlist%}
+    			var point = new google.maps.LatLng(spot.lat, spot.lon);
+    			var marker = new google.maps.Marker({
+    				position: point
+    				map:map
+    			});
+    		{% endfor %}
+    	}*/
+		function setPost(position) {
+			initialize(position.coords.latitude, position.coords.longitude);
+		}
+
+        function initialize(lat, lon) {
+        var mapOptions = {
+          center: new google.maps.LatLng(lat, lon),
+          zoom: 11
+        };
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+        {% for spot in spotlist %}
+	        var point = new google.maps.LatLng({{spot.lat}}, {{spot.lon}});
+	        var marker = new google.maps.Marker({
+	        	position: point,
+	        	map:map
+	        });
+	    {% endfor %}
+        //addMarkers(map);
+      }
 	   	function getLocation() {
 			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(setPost, showError, {timeout:10000});
+				navigator.geolocation.getCurrentPosition(setPost);
+
 			}
 			else {
 				$("#nope").html("GEOLOCATION NOT AVAILABLE IN THIS BROWSER");
 				$("#nope").show()
 			}
 		}
-		function setPost(position) {
-			lat = postition.coords.latitude;
-			lon = position.coords.longitude;
-		}
-      function initialize(lat, lon) {
-        var mapOptions = {
-          center: { lat: lat, lng: lon},
-          zoom: 8
-        };
-        var map = new google.maps.Map(document.getElementById('map-canvas'),
-            mapOptions);
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-      $(document).ready(function() {
 
+
+      //google.maps.event.addDomListener(window, 'load', initialize);
+      $(document).ready(function() {
+      	getLocation();
+      	//initialize();
       });
     </script>
   </head>
