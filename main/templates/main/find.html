@@ -31,7 +31,7 @@
 		</div>	
 	{% endfor %}
 
-
+	{% block map %}
     <style type="text/css">
       html, body, #map-canvas { height: 100%;}
     </style>
@@ -86,9 +86,9 @@
       	//initialize();
       });
     </script>
-  </head>
-  <body>
 <div id="map-canvas"></div>
+
+{% endblock %}
 
 {% else %}
 There are no spots?
