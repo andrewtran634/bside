@@ -60,10 +60,17 @@
         var map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
         {% for spot in spotlist %}
+        	contentString = 'hey';
+        	var infowindow = new google.maps.InfoWindow({
+        		content: contentString
+        	});
 	        var point = new google.maps.LatLng({{spot.lat}}, {{spot.lon}});
 	        var marker = new google.maps.Marker({
 	        	position: point,
 	        	map:map
+	        });
+	        marker.addListener('click', function() {
+	        	infowindow.open(map, marker);
 	        });
 	    {% endfor %}
         //addMarkers(map);

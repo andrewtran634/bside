@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from datetime import datetime, timedelta
 
 # Create your models here.
 class Spot(models.Model):
@@ -12,6 +13,7 @@ class Spot(models.Model):
 
 	def timeleft(self):
 		now = timezone.now()
-		return (self.made) - now
+		time = ((self.made.hour) + self.time - now.hour)#timedelta(hours = self.time) - now)
+		return int(time)
 	def __unicode__(self):
 		return self.name
