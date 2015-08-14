@@ -65,19 +65,24 @@
         var map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
         {% for spot in spotlist %}
-        	contentString = '<h3>{{ spot.name }} </h3>' +
-        		'<p>{{ spot.description }}</p>' +
-        		'<p>{{ spot.timeleft }}</p>';
-        	var infowindow = new google.maps.InfoWindow({
-        		content: contentString
-        	});
 	        var point = new google.maps.LatLng({{spot.lat}}, {{spot.lon}});
 	        var marker = new google.maps.Marker({
 	        	position: point,
 	        	map:map
 	        });
-	        marker.addListener('click', function() {
-	        	infowindow.open(map, marker);
+	        //var tag = {% csrf_token %};
+
+	        marker['infowindow'] = new google.maps.InfoWindow({
+	        		content: '<h3>{{ spot.name }} </h3>'+
+        		'<p>{{ spot.description }}</p>'+
+        		'<p>{{ spot.timeleft }}</p>'+
+        		'<form method = "POST" action = "{% url "main:delete" spot.id %}" id = "delete">' +
+        		'<input type="hidden" name="csrfmiddlewaretoken" value="viF0WoY6EGG69eJe3zmRaakoiKY4i14A">' +
+				'<input type = "submit" value = "end sesh">' +
+				'</form>'
+	        	});
+	        google.maps.event.addListener(marker, 'click', function() {
+	        	this['infowindow'].open(map, this);
 	        });
 	    {% endfor %}
         //addMarkers(map);

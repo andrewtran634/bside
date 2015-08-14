@@ -13,7 +13,8 @@ class Spot(models.Model):
 
 	def timeleft(self):
 		now = timezone.now()
-		time = ((self.made.hour) + self.time - now.hour)#timedelta(hours = self.time) - now)
-		return int(time)
+		timeleft = ((self.made) + timedelta(hours = self.time) - now)
+		
+		return str(timeleft)
 	def __unicode__(self):
 		return self.name
