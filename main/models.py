@@ -15,6 +15,7 @@ class Spot(models.Model):
 		now = timezone.now()
 		timeleft = ((self.made) + timedelta(hours = self.time) - now)
 		
-		return str(timeleft)
+		return float(timeleft.seconds/3600.0)
+
 	def __unicode__(self):
 		return self.name

@@ -1,6 +1,11 @@
 {% block list %}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&v=3&libraries=geometry">
+//calculate some distances
+
+</script>
+
 
 <script type="text/javascript">
 	function findTime() {
@@ -12,9 +17,10 @@
 		.bside
 	</a>
 </div>	
-{% if spotlist %}
-
+{% if spotlist %}	
 	{% for spot in spotlist %}
+		
+
 		<div id = "spot">
 			<p id = "spotname">
 				{{ spot.name }}
@@ -25,9 +31,12 @@
 			</p>
 
 			<p id = "timeleft">
-				{{ spot.timeleft }}
-				<!---->
+				{{ spot.timeleft|floatformat:"-2" }}
+				hours left
 			</p>
+
+			<p id = "distance">
+			</p>	
 		</div>	
 	{% endfor %}
 
@@ -39,15 +48,6 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmu-0gJXE0CMNQRYnXeLCM_oN2_WXSR7E">
     </script>
     <script type="text/javascript">
-    	/*function addMarkers(map) {
-    		{% for spot in spotlist%}
-    			var point = new google.maps.LatLng(spot.lat, spot.lon);
-    			var marker = new google.maps.Marker({
-    				position: point
-    				map:map
-    			});
-    		{% endfor %}
-    	}*/
 		function setPost(position) {
 			initialize(position.coords.latitude, position.coords.longitude);
 		}
@@ -72,11 +72,7 @@
 	        marker['infowindow'] = new google.maps.InfoWindow({
 	        		content: '<h3>{{ spot.name }} </h3>'+
         		'<p>{{ spot.description }}</p>'+
-        		'<p>{{ spot.timeleft }}</p>'+
-        		'<form method = "POST" action = "{% url "main:delete" spot.id %}" id = "delete">' +
-        		'<input type="hidden" name="csrfmiddlewaretoken" value="viF0WoY6EGG69eJe3zmRaakoiKY4i14A">' +
-				'<input type = "submit" value = "end sesh">' +
-				'</form>'
+        		'<p>{{ spot.timeleft|floatformat:"-2" }} hours left</p>'
 	        	});
 	        google.maps.event.addListener(marker, 'click', function() {
 	        	this['infowindow'].open(map, this);
