@@ -1,0 +1,72 @@
+* {
+	margin:0;
+	padding:0;
+	font-family:'Josefin Slab';
+	font-size:1.1em;
+	text-align:center;
+	color:#FFFFFF;
+}
+a {
+	color:#FFFFFF;
+	text-decoration:none;
+}
+a:visited {
+	color:#FFFFFF;
+}
+body {
+	background-color:#52527A;
+}
+#center {
+/* 	margin: 0 auto;
+	width: 500px; */
+}
+#logo {
+	width: 20%;
+	border-color: #FFFFFF;
+	border-style:solid;
+	border-width:2px;
+	border-radius:4px;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+	padding: 1%;
+}
+form input {
+	display: block;
+	margin-left:auto;
+	margin-right:auto;
+}
+textarea {
+	height:60%;
+	width:45%;
+	display:block;
+	margin-left:auto;
+	margin-right:auto;	
+}
+#space {
+	margin:3%;
+}
+#name {
+	width:40%;
+}
+#time {
+	width:10%;
+}
+#lab {
+	text-align:center;
+	color:#FFFFFF;
+}
+#start {
+	width:10%;
+	padding:1%;
+	border-radius:4px;
+	border:none;
+	background-color:yellow;
+}
+.field {
+	text-align:center;
+	font-size:1.5em;
+	border-radius:4px;
+	resize:	none;
+	border:none;
+}

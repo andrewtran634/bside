@@ -13,9 +13,13 @@ class Spot(models.Model):
 
 	def timeleft(self):
 		now = timezone.now()
-		timeleft = ((self.made) + timedelta(hours = self.time) - now)
-		
-		return float(timeleft.seconds/3600.0)
+		skate = (self.made) + timedelta(hours = self.time)
+		timeleft = skate - now
+
+		if (timeleft.total_seconds() <= 0):
+			return 0;
+		else:
+			return (timeleft.total_seconds()/3600.0)
 
 	def __unicode__(self):
 		return self.name

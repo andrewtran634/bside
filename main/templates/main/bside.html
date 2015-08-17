@@ -24,35 +24,47 @@
 	<div id = "center">
 		<div id = "line">
 			<div id = "left">
-				<div id = "link" class = "red"> 
-					<a href = "{% url 'main:start' %}">
-						<p>Start Session</p>
-					</a>	
-				</div>
-				
-				<div id = "link" class = "yellow">
-					<a href = "{% url 'main:end' %}">
-						<p>End Session</p>
-					</a>
-				</div>
+				<a href = "{% url 'main:start' %}">				
+					<div id = "link" class = "red"> 
+						<div id = "inside">
+							<p>Start Session</p>
+						</div>		
+					</div>
+				</a>
+
+				<a href = "{% url 'main:end' %}">
+					<div id = "link" class = "yellow">
+						<div id = "inside">
+							<p>End Session</p>
+						</div>
+					</div>
+				</a>	
+
 			</div>
 		</div>
 	</div>	
-	<div id = "line">
-		<div id = "right">
-			<div id = "link" class = "green">
-				<a href = "{% url 'main:find' %}"
-					<p>Find Sessions</p>
+	<div id = "center">
+		<div id = "line">
+			<div id = "right">
+				<a href = "{% url 'main:find' %}">
+					<div id = "link" class = "green">
+						<div id = "inside">							
+							<p>Find Sessions</p>
+						</div>
+					</div>
 				</a>
-			</div>
-			
-			<div id = "link" class = "blue">
+
 				<a href = "{% url 'main:about' %}">
-					<p>About</p>
+					<div id = "link" class = "blue">
+						<div id = "inside">							
+							<p>About</p>							
+						</div>
+					</div>
 				</a>
+					
 			</div>
 		</div>
-	</div>
+	</div>	
 </div>
 <!--
 <div id = "open">

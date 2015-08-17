@@ -1,6 +1,8 @@
+{% load staticfiles %}
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-
+<link rel="stylesheet" type="text/css" href="startstyle.css">
+<link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css'>
 
 
 <script>
@@ -47,21 +49,52 @@
 	window.onload = getLocation;
 	
 </script>
-<div id = "home">
+
+<div>
 	<a href = "{% url 'main:index' %}">
-		.bside
+		<div id = "logo">
+				.bside
+		</div>	
 	</a>
-</div>	
+</div>
+
 <div id = "nope">
 </div>
 <div id = "work">
 </div>	
-<form action = "{% url 'main:startsesh' %}" id = "deets" method = "POST">
-	{% csrf_token %}
-	<input type = "text" name = "name" id = "name" placeholder = "name the sesh">
-	<textarea name = "description" id = "description" placeholder = "what's happening at the sesh?"></textarea>
-	<input type = "text" name = "time" id = "time" placeholder = "how long will you be skating here?">
-	<input type = "text" name = "lat" id = "latitude">
-	<input type = "text" name = "lon" id = "longitude">
-	<input type = "submit" value = "start">
-</form>
+<div id = "center">
+	<form action = "{% url 'main:startsesh' %}" id = "deets" method = "POST">
+		{% csrf_token %}
+		<div id ="space">
+			<input type = "text" name = "name" id = "name" class = "field" placeholder = "name the sesh">
+		</div>	
+		
+		<div id = "space">
+			<textarea name = "description" id = "description" class = "field" placeholder = "what's happening at the sesh?"></textarea>
+		</div>
+		
+		<div id = "lab">
+			<label>
+				How many hours will you be skating here?
+				<br>
+				Enter a number
+			</label>
+		</div>	
+		
+		<div id = "space">
+			<input type = "text" name = "time" id = "time" class = "field">
+		</div>
+		
+		<div id = "space">
+			<input type = "text" name = "lat" id = "latitude">
+		</div>	
+		
+		<div id = "space">
+			<input type = "text" name = "lon" id = "longitude">
+		</div>
+		
+		<div id = "space">
+			<input type = "submit" value = "start" id = "start">
+		</div>
+	</form>
+</div>
