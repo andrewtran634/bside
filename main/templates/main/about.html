@@ -1,7 +1,16 @@
-<div id = "home">
+{% load staticfiles %}
+
+
+<link rel="stylesheet" type="text/css" href="{% static "css/aboutstyle.css" %}">
+
+<div id = "logo">
 	<a href = "{% url 'main:index' %}">
 		.bside
 	</a>
 </div>	
 
 find skaters, shred together
+<br>
+.bside is an application for helping skaters
+<br>
+find skate sessions that are currently happening around them.

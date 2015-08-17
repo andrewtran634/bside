@@ -1,17 +1,72 @@
+{% load staticfiles %}
+
+{% block list %}
+<link rel="stylesheet" type="text/css" href="{% static "css/findendstyle.css" %}">
+<link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css'>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="findendstyle.css">
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&v=3&libraries=geometry">
+//calculate some distances
 
+</script>
+<script>
+	$(document).ready(function() {
+		$('#list').hide();
+		$('#mapbtn').addClass('hlt');
+		
+		$('#mapbtn').click(function() {
+			if($('#mapbtn').hasClass('proc')) {
+				return;
+			}
+			$('#listbtn').addClass('proc');
+			$('#list').fadeOut(100);
+			$('#mapsection').fadeIn(2000);
+			if($('#mapbtn').hasClass('hlt')) {
+				$('#mapbtn').addClass('hlt');
+			}
+			$('#listbtn').removeClass('hlt');
+			$('#listbtn').removeClass('proc');
+		});
+		
+		$('#listbtn').click(function() {
+			if($('#listbtn').hasClass('proc')) {
+				return;
+			}
+			$('#mapbtn').addClass('proc');
+			$('#mapsection').fadeOut(10);
+			$('#list').fadeIn(2200);
+			if($('#listbtn').hasClass('hlt')) {
+				$('#listbtn').addClass('hlt');
+			}
+			$('#mapbtn').removeClass('hlt');
+			$('#mapbtn').removeClass('proc');
+		});
+	});
+</script>
 
 <div id = "logo">
 	<a href = "{% url 'main:index' %}">
-		.bside
+		<div>
+			.bside
+		</div>	
 	</a>
 </div>	
 {% if spotlist %}
-<div id = "list">
+<div id = "inline">
+	<div id = "listbtn">
+		list
+	</div>
+
+	<div id = "mapbtn">
+		map
+	</div>
+</div>
+
+
+<div id = "list">	
 	{% for spot in spotlist %}
+		
+	<a href = "https://www.google.com/maps/dir/My+Location/{{ spot.lat }},{{ spot.lon }}" target = "_blank">
 		<div id = "spot">
 			<h1 id = "spotname">
 				{{ spot.name }}
@@ -22,36 +77,35 @@
 			</p>
 
 			<p id = "timeleft">
-				{{ spot.timeleft|floatformat:"-2" }}
-				hours left
+				{% if spot.timeleft > 0 %}
+					{{ spot.timeleft|floatformat:"-2" }}
+					hours left
+				{% else %}
+					session's over, come back next time
+				{% endif %}				
 			</p>
+			<div id = "del">	
+				<form method = "POST" action = "{% url 'main:delete' spot.id %}" id = "delete">
+					{% csrf_token %}
+					<input type = "submit" value = "end sesh">
+				</form>	
+			</div>
+			<p id = "distance">
+			</p>	
 		</div>
+	</a>		
+	{% endfor %}
+</div>
 
-		<div id = "del">	
-			<form method = "POST" action = "{% url 'main:delete' spot.id %}" id = "delete">
-				{% csrf_token %}
-				<input type = "submit" value = "end sesh">
-			</form>	
-		</div>
-	{% endfor %}	
-</div>	
 <div id = "mapsection">
-	<style type="text/css">
+		{% block map %}
+	    <style type="text/css">
 	      html, body, #map-canvas { height: 100%;}
 	    </style>
 	    <script type="text/javascript"
 	      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmu-0gJXE0CMNQRYnXeLCM_oN2_WXSR7E">
 	    </script>
 	    <script type="text/javascript">
-	    	/*function addMarkers(map) {
-	    		{% for spot in spotlist%}
-	    			var point = new google.maps.LatLng(spot.lat, spot.lon);
-	    			var marker = new google.maps.Marker({
-	    				position: point
-	    				map:map
-	    			});
-	    		{% endfor %}
-	    	}*/
 			function setPost(position) {
 				initialize(position.coords.latitude, position.coords.longitude);
 			}
@@ -64,21 +118,23 @@
 	        var map = new google.maps.Map(document.getElementById('map-canvas'),
 	            mapOptions);
 	        {% for spot in spotlist %}
+	        	contentString = 'hey';
+	        	var infowindow = new google.maps.InfoWindow({
+	        		content: contentString
+	        	});
 		        var point = new google.maps.LatLng({{spot.lat}}, {{spot.lon}});
 		        var marker = new google.maps.Marker({
 		        	position: point,
 		        	map:map
 		        });
-		        //var tag = {% csrf_token %};
-
 		        marker['infowindow'] = new google.maps.InfoWindow({
 		        		content: '<h3>{{ spot.name }} </h3>'+
 	        		'<p>{{ spot.description }}</p>'+
-	        		'<p>{{ spot.timeleft|floatformat:"-2" }} hours left</p>'+
-	        		'<form method = "POST" action = "{% url "main:delete" spot.id %}" id = "delete">' +
+	        		'<p>{{ spot.timeleft|floatformat:"-2" }} hours left</p>' +
+					'<form method = "POST" action = "{% url "main:delete" spot.id %}" id = "delete">' +
 	        		'<input type="hidden" name="csrfmiddlewaretoken" value="viF0WoY6EGG69eJe3zmRaakoiKY4i14A">' +
 					'<input type = "submit" value = "end sesh">' +
-					'</form>'
+					'</form>'	        		
 		        	});
 		        google.maps.event.addListener(marker, 'click', function() {
 		        	this['infowindow'].open(map, this);
@@ -106,8 +162,9 @@
 	    </script>
 	<div id="map-canvas"></div>
 </div>
-
+{% endblock %}
 
 {% else %}
 There are no spots?
 {% endif %}
+{% endblock %}
