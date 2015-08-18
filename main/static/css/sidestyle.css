@@ -70,8 +70,6 @@
 }
 #link {
 	font-size: 1.3em;
-	padding-top: 2%;
-	padding-bottom: 2%;
 	text-align:center;
 	width:50%;
 }
@@ -81,17 +79,25 @@
 	margin-right:auto;
 }
 .red {
+	padding-top: 2%;
+	padding-bottom: 2%;
 	background-color:rgb(194, 102, 102);
 }
 .yellow {
+	padding-top: 2%;
+	padding-bottom: 2%;
 	background-color:rgb(255, 148, 77);
 	float:right;
 }
 .blue {
+	padding-top: 2%;
+	padding-bottom: 2%;
 	background-color:rgb(112, 112, 184);
 	float:right;
 }
 .green {
+	padding-top: 2%;
+	padding-bottom: 2%;
 	background-color:rgb(112, 184, 112);
 }
 #inside {
