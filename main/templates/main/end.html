@@ -128,9 +128,9 @@
 		        	map:map
 		        });
 		        marker['infowindow'] = new google.maps.InfoWindow({
-		        		content: '<h3>{{ spot.name }} </h3>'+
-	        		'<p>{{ spot.description }}</p>'+
-	        		'<p>{{ spot.timeleft|floatformat:"-2" }} hours left</p>' +
+		        		content: '<h3 id = "btext">{{ spot.name }} </h3>'+
+	        		'<p id = "btext">{{ spot.description }}</p>'+
+	        		'<p id = "btext">{{ spot.timeleft|floatformat:"-2" }} hours left</p>' +
 					'<form method = "POST" action = "{% url "main:delete" spot.id %}" id = "delete">' +
 	        		'<input type="hidden" name="csrfmiddlewaretoken" value="viF0WoY6EGG69eJe3zmRaakoiKY4i14A">' +
 					'<input type = "submit" value = "end sesh">' +

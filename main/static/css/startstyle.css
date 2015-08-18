@@ -64,6 +64,7 @@ textarea {
 	background-color:yellow;
 }
 .field {
+	color:#000000;
 	text-align:center;
 	font-size:1.5em;
 	border-radius:4px;
