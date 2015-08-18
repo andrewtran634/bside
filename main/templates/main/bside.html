@@ -5,6 +5,76 @@
 <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="{% static "css/sidestyle.css" %}" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$('.red').mouseover(function() {
+			$('.red').css('width', '100%');
+			$('#link').css('padding-top', '5%');
+			$('#link').css('padding-bottom', '4%');
+			$('.blue').hide();
+			$('.yellow').hide();
+			$('.green').hide();
+		});
+		$('.red').mouseout(function() {
+			$('.red').css('width', '50%');
+			$('#link').css('padding-top', '2%');
+			$('#link').css('padding-bottom', '2%');
+			$('.blue').show();
+			$('.yellow').show();
+			$('.green').show();
+		});
+		$('.blue').mouseover(function() {
+			$('.blue').css('width', '100%');
+			$('#link').css('padding-top', '5%');
+			$('#link').css('padding-bottom', '4%');
+			$('.red').hide();
+			$('.yellow').hide();
+			$('.green').hide();
+		});
+		$('.blue').mouseout(function() {
+			$('.blue').css('width', '50%');
+			$('#link').css('padding-top', '2%');
+			$('#link').css('padding-bottom', '2%');
+			$('.red').show();
+			$('.yellow').show();
+			$('.green').show();
+		});	
+		$('.yellow').mouseover(function() {
+			$('.yellow').css('width', '100%');
+			$('#link').css('padding-top', '5%');
+			$('#link').css('padding-bottom', '4%');
+			$('.blue').hide();
+			$('.red').hide();
+			$('.green').hide();
+		});
+		$('.yellow').mouseout(function() {
+			$('.yellow').css('width', '50%');
+			$('#link').css('padding-top', '2%');
+			$('#link').css('padding-bottom', '2%');
+			$('.blue').show();
+			$('.red').show();
+			$('.green').show();
+		});	
+		$('.green').mouseover(function() {
+			$('.green').css('width', '100%');
+			$('#link').css('padding-top', '5%');
+			$('#link').css('padding-bottom', '4%');
+			$('.blue').hide();
+			$('.yellow').hide();
+			$('.red').hide();
+		});
+		$('.green').mouseout(function() {
+			$('.green').css('width', '50%');
+			$('#link').css('padding-top', '2%');
+			$('#link').css('padding-bottom', '2%');
+			$('.blue').show();
+			$('.yellow').show();
+			$('.red').show();
+		});					
+	});
+</script>
+
 </head>
 <body>
 <div id = "main">
