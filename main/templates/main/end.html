@@ -41,6 +41,11 @@
 			$('#mapbtn').removeClass('hlt');
 			$('#mapbtn').removeClass('proc');
 		});
+
+		var csrftoken = document.cookie;
+		csrftoken = csrftoken.split('=')[1];
+		$('#csrfmiddlewaretoken').value = csrftoken;
+
 	});
 </script>
 
@@ -127,12 +132,13 @@
 		        	position: point,
 		        	map:map
 		        });
+
 		        marker['infowindow'] = new google.maps.InfoWindow({
 		        		content: '<h3 id = "btext">{{ spot.name }} </h3>'+
 	        		'<p id = "btext">{{ spot.description }}</p>'+
 	        		'<p id = "btext">{{ spot.timeleft|floatformat:"-2" }} hours left</p>' +
 					'<form method = "POST" action = "{% url "main:delete" spot.id %}" id = "delete">' +
-	        		'<input type="hidden" name="csrfmiddlewaretoken" value="viF0WoY6EGG69eJe3zmRaakoiKY4i14A">' +
+	        		'<input type="hidden" id = "csrfmiddlewaretoken" name="csrfmiddlewaretoken">' +
 					'<input type = "submit" value = "end sesh">' +
 					'</form>'	        		
 		        	});
