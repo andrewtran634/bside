@@ -62,7 +62,16 @@
 </div>
 <div id = "work">
 </div>	
+
 <div id = "center">
+	<br>
+	<div id = "error">
+		{% for message in messages %}
+			<p>
+				{{ message }}
+			</p>
+		{% endfor %}
+	</div>
 	<form action = "{% url 'main:startsesh' %}" id = "deets" method = "POST">
 		{% csrf_token %}
 		<div id ="space">
